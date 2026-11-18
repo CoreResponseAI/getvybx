@@ -92,6 +92,7 @@ p { margin: 0; }
 .label { font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; }
 .label.today { color: #6EE7B7; }
 .label.next { color: #A9ACBD; }
+.label.soon { color: #FCD34D; }
 .status p.line { font-size: 17px; line-height: 1.7; }
 .status p.line.next { color: #A9ACBD; }
 .status .gap { height: 32px; }
