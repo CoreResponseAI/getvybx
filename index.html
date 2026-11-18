@@ -1,170 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>VYBX — Coming Soon</title>
-<meta name="description" content="VYBX is a networking and engagement platform by CORE AI, built to make connections more intentional and participation easier to understand. Coming soon." />
-<link rel="canonical" href="https://www.getvybx.com/" />
-<meta property="og:site_name" content="VYBX" />
-<meta property="og:title" content="VYBX — Coming Soon" />
-<meta property="og:description" content="A networking and engagement platform by CORE AI, built to make connections more intentional and participation easier to understand." />
-<meta property="og:url" content="https://www.getvybx.com/" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://www.getvybx.com/og-image.png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="VYBX — Coming Soon" />
-<meta name="twitter:description" content="A networking and engagement platform by CORE AI, built to make connections more intentional and participation easier to understand." />
-<meta name="twitter:image" content="https://www.getvybx.com/og-image.png" />
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { height: 100%; }
-  body {
-    font-family: 'DM Sans', system-ui, sans-serif;
-    color: #ffffff;
-    min-height: 100%;
-  }
-
-  .hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-  /* To add a real photo later: replace the gradient above with
-     background-image: url('data:image/jpeg;base64,...');
-     using a base64-encoded version of the photo (external image
-     links get blocked, so it has to be embedded directly). */
-  .hero-bg {
-    position: absolute; inset: 0;
-    background:
-      radial-gradient(circle at 15% 20%, rgba(168,85,247,0.55) 0%, transparent 45%),
-      radial-gradient(circle at 85% 15%, rgba(99,102,241,0.5) 0%, transparent 50%),
-      radial-gradient(circle at 75% 80%, rgba(236,72,153,0.45) 0%, transparent 50%),
-      radial-gradient(circle at 20% 85%, rgba(139,92,246,0.4) 0%, transparent 45%),
-      #0A0814;
-    z-index: 0;
-  }
-  .hero-bg::after {
-    content: '';
-    position: absolute; inset: 0;
-    background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
-    background-size: 28px 28px;
-  }
-  .hero-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(100deg, rgba(6,4,12,0.55) 0%, rgba(6,4,12,0.15) 50%, rgba(6,4,12,0.4) 100%);
-    z-index: 1;
-  }
-
-  nav {
-    position: relative; z-index: 2;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 28px 56px;
-  }
-  .nav-logo img { height: 34px; display: block; }
-  .nav-tag {
-    font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
-    color: #C7C9D6; border: 1px solid rgba(255,255,255,0.18); border-radius: 999px;
-    padding: 7px 16px;
-  }
-
-  .hero-content {
-    position: relative; z-index: 2;
-    flex: 1;
-    display: flex; flex-direction: column; justify-content: center;
-    padding: 20px 56px 80px;
-    max-width: 780px;
-  }
-
-  .eyebrow {
-    font-size: 12.5px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
-    background: linear-gradient(90deg, #A855F7, #6366F1, #EC4899);
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-    margin-bottom: 22px;
-  }
-
-  h1 {
-    font-size: clamp(38px, 6vw, 68px);
-    font-weight: 800;
-    letter-spacing: -1.5px;
-    line-height: 1.08;
-    margin-bottom: 26px;
-  }
-
-  p.lede {
-    font-size: 18px;
-    color: #D5D7E3;
-    line-height: 1.7;
-    max-width: 560px;
-    margin-bottom: 40px;
-  }
-
-  .cta-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-bottom: 40px; }
-
-  .cta-primary {
-    display: inline-flex; align-items: center; gap: 10px;
-    padding: 16px 32px;
-    border-radius: 8px;
-    background: linear-gradient(90deg, #A855F7, #EC4899);
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 15px; font-weight: 700; letter-spacing: 0.2px;
-    box-shadow: 0 8px 24px rgba(168,85,247,0.35);
-    transition: transform .15s, box-shadow .15s;
-  }
-  .cta-primary:hover { transform: translateY(-1px); box-shadow: 0 10px 30px rgba(168,85,247,0.45); }
-
-  .status-pill {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: 13px; font-weight: 600; letter-spacing: 0.3px;
-    color: #D5D7E3;
-    border: 1px solid rgba(255,255,255,0.18);
-    border-radius: 999px;
-    padding: 12px 22px;
-  }
-  .status-dot { width: 7px; height: 7px; border-radius: 50%; background: #EC4899; box-shadow: 0 0 0 4px rgba(236,72,153,0.2); }
-
-  .built-by { font-size: 13.5px; color: #9295A6; }
-  .built-by a { color: #C7C9D6; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.25); }
-  .built-by a:hover { color: #ffffff; }
-
-  @media (max-width: 640px) {
-    nav { padding: 22px 20px; }
-    .hero-content { padding: 20px 20px 60px; }
-    p.lede { font-size: 16px; }
-    .cta-row { flex-direction: column; align-items: flex-start; }
-  }
-</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VYBX — One platform for community</title>
+<meta name="description" content="VYBX brings members, events and essential community resources onto one platform, with shared insights across all of it.">
+<link rel="canonical" href="https://www.getvybx.com/">
+<meta property="og:site_name" content="VYBX">
+<meta property="og:title" content="VYBX — One platform for community">
+<meta property="og:description" content="VYBX brings members, events and essential community resources onto one platform, with shared insights across all of it.">
+<meta property="og:url" content="https://www.getvybx.com/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.getvybx.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="VYBX — One platform for community">
+<meta name="twitter:description" content="VYBX brings members, events and essential community resources onto one platform, with shared insights across all of it.">
+<meta name="twitter:image" content="https://www.getvybx.com/og-image.png">
+<meta name="theme-color" content="#0A0814">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Kaushan+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
-
-<div class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-overlay"></div>
-
-  <nav>
-    <div class="nav-logo"><img src="vybx-logo.png" alt="VYBX" /></div>
-    <div class="nav-tag">Coming Soon</div>
-  </nav>
-
-  <div class="hero-content">
-    <div class="eyebrow">A Product by CORE AI</div>
-    <h1>You Got Them In the Room.<br>Now Get Them Connected.</h1>
-    <p class="lede">VYBX helps event hosts create better connections, stronger engagement, and more value for attendees, vendors, and sponsors.</p>
-
-    <div class="cta-row">
-      <a href="mailto:abdul@gocoreai.co?subject=VYBX%20Early%20Interest" class="cta-primary">Get in Touch &rarr;</a>
-      <div class="status-pill"><span class="status-dot"></span> In development</div>
-    </div>
-
-    <div class="built-by">Built by <a href="https://www.gocoreai.co" target="_blank" rel="noopener">CORE AI</a></div>
-  </div>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="wrap">
+<a class="brand" href="/" aria-label="VYBX home"><img src="/vybx-logo.png" alt="VYBX"></a>
+<nav class="nav" aria-label="Main">
+<a href="/live/">Live</a>
+<a href="/engage/">Engage</a>
+<a href="/connect/">Connect</a>
+<a href="/insights/">Insights</a>
+<a href="/about/">About</a>
+<a class="btn-outline" href="/contact/">Request a demo</a>
+</nav>
+<button class="menu-btn" type="button" aria-label="Open menu" aria-controls="menu" aria-expanded="false" data-menu-open>
+<svg width="20" height="14" viewBox="0 0 20 14" aria-hidden="true"><path d="M1 1h18M1 7h18M1 13h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
+</button>
 </div>
+</header>
+<div class="mobile-menu" id="menu" data-open="false" role="dialog" aria-modal="true" aria-label="Menu">
+<div class="top">
+<a class="brand" href="/" aria-label="VYBX home"><img src="/vybx-logo.png" alt="VYBX"></a>
+<button class="menu-btn" type="button" aria-label="Close menu" data-menu-close style="display:inline-flex">
+<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
+</button>
+</div>
+<nav aria-label="Mobile">
+<a href="/live/"><span class="lockup" style="font-size:24px"><img src="/vybx-logo.png" alt="VYBX"><span class="live-word"><span>Live</span><svg viewBox="0 0 100 16" preserveAspectRatio="none" aria-hidden="true"><path d="M3 12 C 28 3, 66 1, 97 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span></span><small>Events, Destinations &amp; Experiences</small></a>
+<a href="/engage/"><span class="lockup" style="font-size:24px"><img src="/vybx-logo.png" alt="VYBX"><span class="name">Engage</span></span><small>Membership &amp; Organizational Engagement</small></a>
+<a href="/connect/"><span class="lockup" style="font-size:24px"><img src="/vybx-logo.png" alt="VYBX"><span class="name">Connect</span></span><small>Community Resources &amp; Support</small></a>
+<a href="/insights/"><span class="lockup" style="font-size:24px"><img src="/vybx-logo.png" alt="VYBX"><span class="name">Insights</span></span><small>Shared analytics and reporting</small></a>
+<a href="/about/">About VYBX</a>
+</nav>
+<a class="btn" href="/contact/" style="display:flex;height:56px;margin-top:24px">Request a demo</a>
+</div>
+<main id="main">
 
+<section class="hero">
+<div class="wrap">
+<p class="eyebrow">One platform for community</p>
+<h1>Bring your community together.</h1>
+<p class="lede">Members, events and essential resources on one platform, with shared insights across all of it.</p>
+<div class="actions">
+<a class="btn" href="/contact/">Request a demo</a>
+<a class="text-link" href="#live">See what's available today →</a>
+</div>
+</div>
+</section>
+
+<section class="platform" aria-label="The VYBX platform">
+<div class="wrap">
+<div class="strip">
+<a class="c-live" href="/live/"><span class="lockup"><img src="/vybx-logo.png" alt="VYBX"><span class="live-word"><span>Live</span><svg viewBox="0 0 100 16" preserveAspectRatio="none" aria-hidden="true"><path d="M3 12 C 28 3, 66 1, 97 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span></span><p class="t">Events, Destinations &amp; Experiences</p><p class="d">Welcome every guest in seconds. No app to download.</p></a>
+<a class="c-engage" href="/engage/"><span class="lockup"><img src="/vybx-logo.png" alt="VYBX"><span class="name">Engage</span></span><p class="t">Membership &amp; Organizational Engagement</p><p class="d">Keep members active and proud to belong, all year.</p></a>
+<a class="c-connect" href="/connect/"><span class="lockup"><img src="/vybx-logo.png" alt="VYBX"><span class="name">Connect</span></span><p class="t">Community Resources &amp; Support</p><p class="d">Help neighbors find food, housing and support fast.</p></a>
+</div>
+<a class="insights-bar" href="/insights/"><span class="lockup" style="font-size:20px"><img src="/vybx-logo.png" alt="VYBX"><span class="name">Insights</span></span><span class="d">Shared analytics and reporting across the platform</span></a>
+</div>
+</section>
+
+<section class="solution" id="live">
+<div class="wrap">
+<div>
+<span class="lockup"><img src="/vybx-logo.png" alt="VYBX"><span class="live-word"><span>Live</span><svg viewBox="0 0 100 16" preserveAspectRatio="none" aria-hidden="true"><path d="M3 12 C 28 3, 66 1, 97 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span></span>
+<h2>Events, Destinations &amp; Experiences</h2>
+<p class="lede">Guests scan, check in and find their way in seconds. Organizers see who came and what worked.</p>
+<p class="uses">Festivals · Parades · Conferences · Tourism · Agritourism · Downtown discovery · Digital passports</p>
+</div>
+<div class="status">
+<p class="label today">Available today</p>
+<p class="line">QR check-in · Schedules and venue maps · Directories · Organizer dashboard</p>
+<div class="gap"></div>
+<p class="label next">In development</p>
+<p class="line next">Parades, tourism and agritourism · Downtown discovery · Digital passports</p>
+<a class="text-link more" href="/live/">Explore VYBX Live →</a>
+</div>
+</div>
+</section>
+
+<section class="solution" id="engage">
+<div class="wrap">
+<div>
+<span class="lockup"><img src="/vybx-logo.png" alt="VYBX"><span class="name">Engage</span></span>
+<h2>Membership &amp; Organizational Engagement</h2>
+<p class="lede">Give members a reason to stay: a directory they use, referrals that pay off, value they can see.</p>
+</div>
+<div class="status">
+<p class="label today">Available today</p>
+<p class="line">Member directory · Member dashboards · Referral sharing</p>
+<div class="gap"></div>
+<p class="label next">In development</p>
+<p class="line next">Membership tiers and renewals · Member applications</p>
+<a class="text-link more" href="/engage/">Explore VYBX Engage →</a>
+</div>
+</div>
+</section>
+
+<section class="solution" id="connect">
+<div class="wrap">
+<div>
+<span class="lockup"><img src="/vybx-logo.png" alt="VYBX"><span class="name">Connect</span></span>
+<h2>Community Resources &amp; Support</h2>
+<p class="lede">Make help easy to find. No account, no barriers, and privacy built in.</p>
+</div>
+<div class="status">
+<p class="label today">Available today</p>
+<p class="line">Resource guides by need at VYBX Live events</p>
+<div class="gap"></div>
+<p class="label next">In development</p>
+<p class="line next">Year-round resource directory · Partner profiles · Referral tracking</p>
+<a class="text-link more" href="/connect/">Explore VYBX Connect →</a>
+</div>
+</div>
+</section>
+
+<section class="solution" id="insights">
+<div class="wrap panel" style="max-width:1104px">
+<div>
+<span class="lockup"><img src="/vybx-logo.png" alt="VYBX"><span class="name">Insights</span></span>
+<h2>Know what's working.</h2>
+<p class="lede">Shared analytics and reporting across Engage, Live and Connect. Built in, not bolted on.</p>
+</div>
+<div class="status">
+<p class="label today">Available today</p>
+<p class="line">Registrations, check-ins and attendance</p>
+<div class="gap"></div>
+<p class="label next">In development</p>
+<p class="line next">One view across the platform · Sponsor and funder reports</p>
+<a class="text-link more" href="/insights/">Explore VYBX Insights →</a>
+</div>
+</div>
+</section>
+
+<section class="creds" aria-label="Company credentials">
+<div class="wrap">
+<div>
+<ul>
+<li><strong>NMSDC Certified</strong> Minority Business Enterprise</li>
+<li><strong>Tayyab Group Inc.</strong> d/b/a VYBX</li>
+<li>Built in Prince William County, Virginia</li>
+</ul>
+<a class="text-link" href="/about/" style="font-size:15px">Company and credentials →</a>
+</div>
+</div>
+</section>
+
+<section class="closing">
+<div class="wrap">
+<h2>See VYBX for your community.</h2>
+<p>A 20-minute walkthrough of what's ready today and what's next.</p>
+<a class="btn" href="/contact/">Request a demo</a>
+</div>
+</section>
+
+</main>
+<footer class="site-footer">
+<div class="wrap">
+<div class="who">
+<img src="/vybx-logo.png" alt="VYBX">
+<p>Tayyab Group Inc. d/b/a VYBX · Bristow, Virginia</p>
+<p style="margin-top:6px">© 2026 Tayyab Group Inc.</p>
+</div>
+<nav aria-label="Footer">
+<a href="/live/">Live</a>
+<a href="/engage/">Engage</a>
+<a href="/connect/">Connect</a>
+<a href="/insights/">Insights</a>
+<a href="/about/">About</a>
+<a href="/contact/">Contact</a>
+<a href="/capability-statement.pdf">Capability statement (PDF)</a>
+</nav>
+</div>
+</footer>
+<script>
+(function () {
+  var menu = document.getElementById('menu');
+  var openBtn = document.querySelector('[data-menu-open]');
+  var closeBtn = document.querySelector('[data-menu-close]');
+  function set(open) {
+    menu.setAttribute('data-open', open ? 'true' : 'false');
+    openBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
+    (open ? closeBtn : openBtn).focus();
+  }
+  openBtn.addEventListener('click', function () { set(true); });
+  closeBtn.addEventListener('click', function () { set(false); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) set(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menu.getAttribute('data-open') === 'true') set(false); });
+})();
+</script>
 </body>
 </html>
