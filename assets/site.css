@@ -27,7 +27,7 @@ p { margin: 0; }
 
 /* Header */
 .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 28px; padding-bottom: 28px; }
-.brand img { height: 32px; width: auto; display: block; }
+.brand img { height: 40px; width: auto; display: block; }
 .nav { display: flex; align-items: center; gap: 36px; font-size: 15px; font-weight: 500; }
 .nav a[aria-current="page"] { color: #ffffff; }
 .btn-outline { color: #ffffff; padding: 11px 22px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.32); font-weight: 600; }
@@ -47,7 +47,7 @@ p { margin: 0; }
 
 /* Lockups */
 .lockup { display: inline-flex; align-items: center; gap: 0.3em; line-height: 1; font-size: 24px; }
-.lockup img { height: 1em; width: auto; display: block; }
+.lockup img { height: 1.15em; width: auto; display: block; }
 .lockup .name { font-weight: 600; letter-spacing: -0.02em; font-size: 0.95em; }
 .live-word { position: relative; display: inline-block; color: #FFD43B; padding-bottom: 0.18em; }
 .live-word span { display: block; font-family: 'Kaushan Script', 'Brush Script MT', cursive; font-size: 1.05em; line-height: 1; transform: rotate(-6deg); text-shadow: 0 0 0.35em rgba(255,212,59,0.45); }
@@ -137,14 +137,14 @@ p { margin: 0; }
 
 /* Footer */
 .site-footer .wrap { padding-top: 40px; padding-bottom: 56px; border-top: 1px solid rgba(255,255,255,0.10); display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 28px; font-size: 14px; color: #A9ACBD; }
-.site-footer .who img { height: 22px; width: auto; display: block; margin-bottom: 14px; }
+.site-footer .who img { height: 36px; width: auto; display: block; margin-bottom: 14px; }
 .site-footer nav { display: flex; flex-wrap: wrap; gap: 12px 28px; }
 
 /* Phones and small tablets */
 @media (max-width: 860px) {
   .wrap { padding: 0 24px; }
   .site-header .wrap { padding: 20px 20px 20px 24px; }
-  .brand img { height: 26px; }
+  .brand img { height: 34px; }
   .nav { display: none; }
   .menu-btn { display: inline-flex; }
   .hero { text-align: left; padding: 56px 0 80px; }
