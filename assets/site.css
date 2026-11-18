@@ -237,3 +237,10 @@ p { margin: 0; }
   .eyebrow.vce { font-size: 11.5px; letter-spacing: 2.4px; }
   .vce .x { margin: 0 9px 0 7px; }
 }
+
+/* Brand rule: VYBX always appears as the wordmark, never as type */
+img.vx { display: inline-block; height: 0.8em; width: auto; vertical-align: -0.06em; margin: 0 0.04em; }
+.vx-live { white-space: nowrap; }
+.vx-l { font-family: 'Kaushan Script', cursive; color: #FFD43B; font-size: 1.08em; margin-left: 0.22em; font-weight: 400; letter-spacing: 0; }
+.btn-ghost, .btn, .text-link { column-gap: 0.32em; }
+.btn img.vx, .btn-ghost img.vx { height: 0.86em; vertical-align: 0; }
