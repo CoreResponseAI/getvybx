@@ -244,3 +244,17 @@ img.vx { display: inline-block; height: 0.8em; width: auto; vertical-align: -0.0
 .vx-l { font-family: 'Kaushan Script', cursive; color: #FFD43B; font-size: 1.08em; margin-left: 0.22em; font-weight: 400; letter-spacing: 0; }
 .btn-ghost, .btn, .text-link { column-gap: 0.32em; }
 .btn img.vx, .btn-ghost img.vx { height: 0.86em; vertical-align: 0; }
+
+/* Solution overview: plain text names (no repeated wordmark) */
+.sname { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin: 0; color: #fff; }
+.sname-sm { font-size: 22px; }
+
+/* Mobile: never allow sideways scrolling */
+html, body { max-width: 100%; overflow-x: hidden; }
+@supports (overflow: clip) { html, body { overflow-x: clip; } }
+.hero h1, .hero .lede, .page-hero h1, .page-hero .lede { overflow-wrap: break-word; max-width: 100%; }
+.showcase picture { display: block; max-width: 100%; }
+@media (max-width: 860px) {
+  .showcase figure::before { inset: 10% 0 0; }
+  .eyebrow.vce { max-width: 100%; }
+}
