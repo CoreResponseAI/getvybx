@@ -225,3 +225,15 @@ p { margin: 0; }
   .showcase { padding-bottom: 48px; }
   .showcase figcaption { text-align: left; font-size: 13px; }
 }
+
+/* Eyebrow: Vibe × Connection × Impact */
+.eyebrow.vce { display: inline-flex; align-items: baseline; justify-content: center; gap: 0; letter-spacing: 3px; font-weight: 600; white-space: nowrap; }
+.vce em { font-style: italic; }
+.vce .v { color: #C4B5FD; }
+.vce .c { color: #FFFFFF; }
+.vce .i { color: #EC4899; }
+.vce .x { color: #8B7FB8; font-weight: 400; letter-spacing: 0; margin: 0 14px 0 11px; }
+@media (max-width: 860px) {
+  .eyebrow.vce { font-size: 11.5px; letter-spacing: 2.4px; }
+  .vce .x { margin: 0 9px 0 7px; }
+}
