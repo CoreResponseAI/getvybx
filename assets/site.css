@@ -285,15 +285,15 @@ html, body { max-width: 100%; overflow-x: hidden; }
 .fx-arc { animation-duration: 13s; }
 @keyframes fxLine {
   0% { stroke-dashoffset: 1; opacity: 0; }
-  10% { opacity: .75; }
-  40% { stroke-dashoffset: 0; opacity: .75; }
-  70% { stroke-dashoffset: 0; opacity: .35; }
+  10% { opacity: var(--peak, .85); }
+  40% { stroke-dashoffset: 0; opacity: var(--peak, .85); }
+  70% { stroke-dashoffset: 0; opacity: .4; }
   100% { stroke-dashoffset: 0; opacity: 0; }
 }
-.fx-node { opacity: .35; animation: fxNode 6s ease-in-out infinite; animation-delay: var(--d); }
+.fx-node { opacity: var(--base, .45); animation: fxNode 6s ease-in-out infinite; animation-delay: var(--d); }
 @keyframes fxNode { 50% { opacity: 1; } }
 .fx-halo { position: absolute; inset: 0;
-  background: radial-gradient(ellipse 38% 46% at 50% 54%, rgba(10,8,20,.72) 0%, rgba(10,8,20,.35) 55%, rgba(10,8,20,0) 100%); }
+  background: radial-gradient(ellipse 38% 46% at 50% 54%, rgba(10,8,20,.62) 0%, rgba(10,8,20,.28) 55%, rgba(10,8,20,0) 100%); }
 .hero-fx.fx-paused *, .hero-fx.fx-paused { animation-play-state: paused !important; }
 
 @media (max-width: 860px) {
@@ -304,7 +304,12 @@ html, body { max-width: 100%; overflow-x: hidden; }
   .fx-aura.a1 { width: 120vw; height: 120vw; left: -50vw; top: -30vw; }
   .fx-aura.a2 { width: 110vw; height: 110vw; right: -55vw; top: 40vw; }
   .fx-aura.a3 { width: 90vw; height: 90vw; left: 10vw; top: 90vw; }
-  .fx-halo { background: radial-gradient(ellipse 70% 40% at 30% 50%, rgba(10,8,20,.7) 0%, rgba(10,8,20,.3) 60%, rgba(10,8,20,0) 100%); }
+  .fx-halo { background: radial-gradient(ellipse 62% 34% at 40% 46%, rgba(10,8,20,.5) 0%, rgba(10,8,20,.18) 60%, rgba(10,8,20,0) 100%); }
+  .hero-fx { -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 5%, #000 82%, transparent 100%);
+                     mask-image: linear-gradient(to bottom, transparent 0, #000 5%, #000 82%, transparent 100%); }
+  .fx-line { --peak: .95; stroke-width: 1.15; }
+  .fx-node { --base: .55; }
+  .fx-aura { opacity: .62; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-fx *, .hero-fx { animation: none !important; }
