@@ -280,18 +280,27 @@ html, body { max-width: 100%; overflow-x: hidden; }
 .fx-net.fx-m { display: none; }
 .fx-drift { animation: fxDrift 40s ease-in-out infinite alternate; }
 @keyframes fxDrift { to { transform: translate(18px, -12px); } }
-.fx-line { fill: none; stroke-width: 1; stroke-linecap: round; vector-effect: non-scaling-stroke;
-  stroke-dasharray: 1; stroke-dashoffset: 1; opacity: 0; animation: fxLine 10s cubic-bezier(.45,0,.2,1) infinite; animation-delay: var(--d); }
-.fx-arc { animation-duration: 13s; }
+.fx-line { fill: none; stroke: var(--stroke); stroke-width: 1; stroke-linecap: round; vector-effect: non-scaling-stroke;
+  stroke-dasharray: 1; stroke-dashoffset: 1; opacity: 0; animation: fxLine 14s cubic-bezier(.45,0,.2,1) infinite backwards; animation-delay: var(--d); }
+/* draw (~1.5s), hold as a full network, fade together, rest */
 @keyframes fxLine {
   0% { stroke-dashoffset: 1; opacity: 0; }
-  10% { opacity: var(--peak, .85); }
-  40% { stroke-dashoffset: 0; opacity: var(--peak, .85); }
-  70% { stroke-dashoffset: 0; opacity: .4; }
+  2% { opacity: var(--peak, .85); }
+  12% { stroke-dashoffset: 0; opacity: var(--peak, .85); }
+  52% { stroke-dashoffset: 0; opacity: var(--peak, .85); }
+  64% { stroke-dashoffset: 0; opacity: 0; }
   100% { stroke-dashoffset: 0; opacity: 0; }
 }
-.fx-node { opacity: var(--base, .45); animation: fxNode 6s ease-in-out infinite; animation-delay: var(--d); }
-@keyframes fxNode { 50% { opacity: 1; } }
+.fx-glow { fill: var(--glow); }
+.fx-node { opacity: 0; animation: fxNode 14s ease-in-out infinite backwards; animation-delay: var(--d); }
+@keyframes fxNode {
+  0% { opacity: 0; }
+  6% { opacity: var(--base, .75); }
+  30% { opacity: 1; }
+  62% { opacity: var(--base, .75); }
+  78% { opacity: 0; }
+  100% { opacity: 0; }
+}
 .fx-halo { position: absolute; inset: 0;
   background: radial-gradient(ellipse 38% 46% at 50% 54%, rgba(10,8,20,.62) 0%, rgba(10,8,20,.28) 55%, rgba(10,8,20,0) 100%); }
 .hero-fx.fx-paused *, .hero-fx.fx-paused { animation-play-state: paused !important; }
@@ -308,11 +317,11 @@ html, body { max-width: 100%; overflow-x: hidden; }
   .hero-fx { -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 5%, #000 82%, transparent 100%);
                      mask-image: linear-gradient(to bottom, transparent 0, #000 5%, #000 82%, transparent 100%); }
   .fx-line { --peak: .95; stroke-width: 1.15; }
-  .fx-node { --base: .55; }
+  .fx-node { --base: .8; }
   .fx-aura { opacity: .62; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-fx *, .hero-fx { animation: none !important; }
-  .fx-line { stroke-dashoffset: 0; opacity: .4; }
-  .fx-node { opacity: .7; }
+  .fx-line { stroke-dashoffset: 0; opacity: .45; }
+  .fx-node { opacity: .75; }
 }
