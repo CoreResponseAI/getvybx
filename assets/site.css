@@ -427,3 +427,4 @@ html, body { max-width: 100%; overflow-x: hidden; }
 .org-signin a:hover { color: #fff; }
 .form-h { font-size: 12px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: #C4B5FD; margin: 4px 0 -4px; }
 .lead-form input::placeholder { color: #6E7183; }
+img.vx.vx-white { opacity: .92; }
