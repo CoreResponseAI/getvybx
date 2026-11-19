@@ -1,4 +1,4 @@
-// VYBX website lead form (VYBX Live pilot requests).
+// VYBX website lead form ("Start your event" inquiries from the VYBX Live page).
 // Runs as a Vercel Function inside the getvybx website project only.
 // No database and no connection to the VYBX Live app: it validates the
 // submission, filters spam, and emails the lead through Resend from the
@@ -11,8 +11,8 @@
 //   TURNSTILE_SECRET  optional. If set, a valid Cloudflare Turnstile token is required.
 
 const ALLOWED_HOSTS = [/^(www\.)?getvybx\.com$/, /^getvybx(-[a-z0-9-]+)?\.vercel\.app$/, /^localhost(:\d+)?$/];
-const EVENT_TYPES = ["Chamber or association event", "Festival or community event", "Conference or expo", "Destination or downtown", "Other"];
-const SIZES = ["", "Under 100", "100–500", "500–2,000", "2,000+"];
+const SIZES = ["Under 100", "100–500", "500–2,000", "2,000+"];
+const GUEST_LIST = ["", "Yes, in a spreadsheet", "Not yet", "Not sure"];
 const MIN_FILL_MS = 3000;        // humans take longer than this to fill the form
 const MAX_AGE_MS = 24 * 3600e3;  // stale or replayed page loads
 const RATE = { windowMs: 10 * 60e3, max: 5 };
@@ -89,10 +89,11 @@ module.exports = async (req, res) => {
     organization: oneLine(b.organization, 160),
     email: oneLine(b.email, 200),
     phone: oneLine(b.phone, 40),
-    eventType: oneLine(b.event_type, 60),
-    size: oneLine(b.attendance, 30),
+    eventName: oneLine(b.event_name, 160),
     date: oneLine(b.event_date, 80),
-    message: clean(b.message, 2000),
+    size: oneLine(b.attendance, 30),
+    venue: oneLine(b.venue, 160),
+    guestList: oneLine(b.guest_list, 40),
   };
 
   const errors = {};
@@ -100,10 +101,12 @@ module.exports = async (req, res) => {
   if (lead.organization.length < 2) errors.organization = "Please enter your organization.";
   if (!EMAIL_RE.test(lead.email)) errors.email = "Please enter a valid email address.";
   if (lead.phone && !/^[0-9+().\-\s]{7,40}$/.test(lead.phone)) errors.phone = "Please check the phone number.";
-  if (!EVENT_TYPES.includes(lead.eventType)) errors.event_type = "Please choose a type of event.";
+  if (lead.eventName.length < 2) errors.event_name = "Please enter your event's name.";
+  if (lead.date.length < 2) errors.event_date = "Please enter an approximate date.";
   if (!SIZES.includes(lead.size)) errors.attendance = "Please choose an attendance range.";
-  const links = (lead.message.match(/https?:\/\/|www\./gi) || []).length;
-  if (links > 2) errors.message = "Please remove links from your message.";
+  if (!GUEST_LIST.includes(lead.guestList)) errors.guest_list = "Please choose an option.";
+  const linky = /https?:\/\/|www\./i;
+  ["name", "organization", "eventName", "venue"].forEach((k) => { if (linky.test(lead[k])) errors[k === "eventName" ? "event_name" : k] = "Please remove links."; });
   if (Object.keys(errors).length) return reply(req, res, 422, { ok: false, error: "Please fix the highlighted fields.", errors });
 
   const key = process.env.RESEND_API_KEY;
@@ -114,10 +117,10 @@ module.exports = async (req, res) => {
 
   const rows = [
     ["Name", lead.name], ["Organization", lead.organization], ["Email", lead.email], ["Phone", lead.phone || "—"],
-    ["Type of event", lead.eventType], ["Expected attendance", lead.size || "—"], ["Event date", lead.date || "—"],
-    ["Message", lead.message || "—"], ["Page", "VYBX Live (getvybx.com/live)"],
+    ["Event name", lead.eventName], ["Approximate date", lead.date], ["Expected attendance", lead.size],
+    ["Venue", lead.venue || "—"], ["Guest list", lead.guestList || "—"], ["Page", "VYBX Live, Start your event (getvybx.com/live)"],
   ];
-  const html = `<h2 style="font-family:sans-serif">New VYBX Live pilot request</h2><table cellpadding="8" style="font-family:sans-serif;border-collapse:collapse">${rows
+  const html = `<h2 style="font-family:sans-serif">New VYBX Live event inquiry</h2><table cellpadding="8" style="font-family:sans-serif;border-collapse:collapse">${rows
     .map(([k, v]) => `<tr><td style="color:#555;vertical-align:top"><b>${k}</b></td><td style="white-space:pre-wrap">${esc(v)}</td></tr>`).join("")}</table>`;
   const text = rows.map(([k, v]) => `${k}: ${v}`).join("\n");
 
@@ -129,9 +132,9 @@ module.exports = async (req, res) => {
         from: process.env.LEAD_FROM || "VYBX Website <notifications@getvybx.com>",
         to: [process.env.LEAD_TO || "abdul@gocoreai.co"],
         reply_to: lead.email,
-        subject: `VYBX Live pilot request: ${lead.organization}`,
+        subject: `Start your event: ${lead.eventName} (${lead.organization})`,
         html, text,
-        tags: [{ name: "source", value: "website_live_pilot" }],
+        tags: [{ name: "source", value: "website_start_event" }],
       }),
     });
     if (!r.ok) {
@@ -143,6 +146,6 @@ module.exports = async (req, res) => {
     return reply(req, res, 502, { ok: false, error: "We couldn't send your request right now. Please email support@getvybx.com." });
   }
 
-  console.log("lead: sent", { org: lead.organization, type: lead.eventType });
+  console.log("lead: sent", { org: lead.organization, size: lead.size });
   return reply(req, res, 200, { ok: true });
 };

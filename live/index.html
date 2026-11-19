@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VYBX Live — Run a smoother event and know who showed up</title>
-<meta name="description" content="Branded event pages, QR check-in for registered guests and an opt-in attendee directory, with no app to download. Request a VYBX Live pilot for your next event.">
+<meta name="description" content="Branded event pages, QR check-in for registered guests and an opt-in attendee directory, with no app to download. Tell us about your next event and we'll help you set it up.">
 <link rel="canonical" href="https://www.getvybx.com/live/">
 <meta property="og:site_name" content="VYBX">
 <meta property="og:title" content="VYBX Live — Run a smoother event and know who showed up">
-<meta property="og:description" content="Branded event pages, QR check-in for registered guests and an opt-in attendee directory, with no app to download. Request a VYBX Live pilot for your next event.">
+<meta property="og:description" content="Branded event pages, QR check-in for registered guests and an opt-in attendee directory, with no app to download. Tell us about your next event and we'll help you set it up.">
 <meta property="og:url" content="https://www.getvybx.com/live/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://www.getvybx.com/og-image.png">
@@ -16,7 +16,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="VYBX Live — Run a smoother event and know who showed up">
-<meta name="twitter:description" content="Branded event pages, QR check-in for registered guests and an opt-in attendee directory, with no app to download. Request a VYBX Live pilot for your next event.">
+<meta name="twitter:description" content="Branded event pages, QR check-in for registered guests and an opt-in attendee directory, with no app to download. Tell us about your next event and we'll help you set it up.">
 <meta name="twitter:image" content="https://www.getvybx.com/og-image.png">
 <meta name="theme-color" content="#0A0814">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -67,7 +67,8 @@
 <p class="lh-kicker">Events, Destinations &amp; Experiences</p>
 <h1>Run a smoother event — and know who showed up.</h1>
 <p class="lede">Welcome every guest with a branded event page and QR check-in, help attendees meet the right people, and leave with a clear record of who came. No app to download.</p>
-<div class="actions"><a class="btn" href="#pilot">Request a pilot</a><a class="btn-ghost" href="#how">See how it works</a></div>
+<div class="actions"><a class="btn" href="#start">Start your event</a><a class="btn-ghost" href="#how">See how it works</a></div>
+<p class="org-signin">Already an organizer? <a href="https://vibe-events.vercel.app/sign-in">Sign in</a></p>
 </div>
 <figure class="lh-visual">
 <img src="/assets/showcase/mob.webp" width="1520" height="1240" alt="VYBX Live on attendees' phones: a checked-in event home and the Discover people directory" fetchpriority="high" decoding="async">
@@ -149,27 +150,30 @@
 </div>
 </section>
 
-<section class="section live-pilot" id="pilot">
+<section class="section live-pilot" id="start"><span id="pilot"></span>
 <div class="wrap pilot-grid">
 <div class="pilot-copy">
-<h2>Run your next event on <span class="vx-live"><img class="vx" src="/assets/brand/compact/vybx-main-compact.png" alt="VYBX"><span class="vx-l">Live</span></span>.</h2>
-<p class="lede">Start with one event. Our team works with you to prepare it, so you're ready for check-in on event day.</p>
+<h2>Start your event.</h2>
+<p class="lede">Tell us about your event. We'll follow up with next steps and a customized quote, then our team works with you to prepare it, so you're ready for check-in on event day.</p>
 <p class="label today">Implementation support included</p>
 <ul class="list"><li>Event preparation with our team</li><li>Guest list import</li><li>Event page, branding and features configured for your event</li><li>Organizer access set up for your team</li><li>Check-in readiness: your QR code and a walkthrough before event day</li></ul>
-<p class="pilot-price">Pricing is customized to your event's size and requirements. Tell us about it and we'll send a pilot quote.</p>
+<p class="pilot-price">Pricing is customized to your event's size and requirements. Nothing is published until we've set it up together.</p>
 </div>
 <form class="lead-form" action="/api/lead" method="POST" novalidate>
 <input type="hidden" name="t" value="">
 <div class="hp" aria-hidden="true"><label>Company website<input type="text" name="company_website" tabindex="-1" autocomplete="off"></label></div>
+<p class="form-h">Your contact information</p>
 <div class="f2"><label><span class="lt">Name</span><input name="name" required maxlength="120" autocomplete="name"></label><label><span class="lt">Organization</span><input name="organization" required maxlength="160" autocomplete="organization"></label></div>
 <div class="f2"><label><span class="lt">Email</span><input type="email" name="email" required maxlength="200" autocomplete="email"></label><label><span class="lt">Phone <span class="opt">(optional)</span></span><input type="tel" name="phone" maxlength="40" autocomplete="tel"></label></div>
-<div class="f2"><label><span class="lt">Type of event</span><select name="event_type" required><option value="">Choose one</option><option>Chamber or association event</option><option>Festival or community event</option><option>Conference or expo</option><option>Destination or downtown</option><option>Other</option></select></label>
-<label><span class="lt">Expected attendance <span class="opt">(optional)</span></span><select name="attendance"><option value="">Choose one</option><option>Under 100</option><option>100–500</option><option>500–2,000</option><option>2,000+</option></select></label></div>
-<label><span class="lt">Event date <span class="opt">(approximate is fine)</span></span><input name="event_date" maxlength="80"></label>
-<label><span class="lt">Tell us about your event <span class="opt">(optional)</span></span><textarea name="message" rows="3" maxlength="2000"></textarea></label>
+<p class="form-h">Your event</p>
+<label><span class="lt">Event name</span><input name="event_name" required maxlength="160"></label>
+<div class="f2"><label><span class="lt">Approximate date</span><input name="event_date" required maxlength="80" placeholder="e.g. May 2027"></label>
+<label><span class="lt">Expected attendance</span><select name="attendance" required><option value="">Choose one</option><option>Under 100</option><option>100–500</option><option>500–2,000</option><option>2,000+</option></select></label></div>
+<div class="f2"><label><span class="lt">Venue <span class="opt">(optional)</span></span><input name="venue" maxlength="160"></label>
+<label><span class="lt">Guest list <span class="opt">(optional)</span></span><select name="guest_list"><option value="">Choose one</option><option>Yes, in a spreadsheet</option><option>Not yet</option><option>Not sure</option></select></label></div>
 <p class="form-status" role="status" aria-live="polite"></p>
-<button class="btn" type="submit">Request a pilot quote</button>
-<p class="form-note">We'll only use your details to follow up about your event.</p>
+<button class="btn" type="submit">Send event details</button>
+<p class="form-note">We'll reply with next steps. We only use your details to follow up about your event.</p>
 </form>
 </div>
 </section>
@@ -182,7 +186,7 @@
 <details class="faq-item"><summary>Can it carry our branding?</summary><p>Yes. Your event page uses your logo and colors.</p></details>
 <details class="faq-item"><summary>Who can see attendee information?</summary><p>Attendees choose whether to appear in the event directory. Your organizer team can export the guest list.</p></details>
 <details class="faq-item"><summary>Do we need technical staff?</summary><p>No. Our team helps you prepare your event, import your guests and configure your event page, so you're ready for check-in.</p></details>
-<details class="faq-item"><summary>What does it cost?</summary><p>Pricing is customized to your event's size and requirements. Request a pilot quote and we'll send one.</p></details>
+<details class="faq-item"><summary>What does it cost?</summary><p>Pricing is customized to your event's size and requirements. Tell us about your event and we'll send a quote.</p></details>
 </div>
 </section>
 <script>(function(){
@@ -194,7 +198,7 @@ function clearErr(){f.querySelectorAll('[aria-invalid]').forEach(function(el){el
 function showErr(name,msg){var el=f.elements[name];if(!el)return;el.setAttribute('aria-invalid','true');var p=document.createElement('span');p.className='f-err';p.textContent=msg;el.insertAdjacentElement('afterend',p);}
 f.addEventListener('submit',function(e){
   e.preventDefault();clearErr();
-  var bad=false;['name','organization','email','event_type'].forEach(function(n){var el=f.elements[n];if(!el.value.trim()){showErr(n,'Required');bad=true;}});
+  var bad=false;['name','organization','email','event_name','event_date','attendance'].forEach(function(n){var el=f.elements[n];if(!el.value.trim()){showErr(n,'Required');bad=true;}});
   if(f.elements.email.value&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.elements.email.value)){showErr('email','Please enter a valid email address.');bad=true;}
   if(bad){st.textContent='Please fill in the highlighted fields.';st.className='form-status err';return;}
   btn.disabled=true;btn.textContent='Sending…';st.textContent='';st.className='form-status';
@@ -204,9 +208,9 @@ f.addEventListener('submit',function(e){
     if(j.ok){location.href='/thanks/';return;}
     if(j.errors)Object.keys(j.errors).forEach(function(k){showErr(k,j.errors[k]);});
     st.textContent=j.error||'Something went wrong. Please email support@getvybx.com.';st.className='form-status err';
-    btn.disabled=false;btn.textContent='Request a pilot quote';
+    btn.disabled=false;btn.textContent='Send event details';
   })
-  .catch(function(){st.textContent='Network error. Please try again or email support@getvybx.com.';st.className='form-status err';btn.disabled=false;btn.textContent='Request a pilot quote';});
+  .catch(function(){st.textContent='Network error. Please try again or email support@getvybx.com.';st.className='form-status err';btn.disabled=false;btn.textContent='Send event details';});
 });
 })();</script>
 

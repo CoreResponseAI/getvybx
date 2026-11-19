@@ -422,3 +422,8 @@ html, body { max-width: 100%; overflow-x: hidden; }
 .f-err { font-size: 12.5px; font-weight: 500; color: #FCA5A5; }
 .lead-form [aria-invalid="true"] { border-color: #F87171; }
 .lead-form .hp { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; overflow: hidden; }
+.org-signin { margin-top: 18px; font-size: 14px; color: #8E91A3; }
+.org-signin a { color: #C4B5FD; text-decoration: underline; text-underline-offset: 3px; }
+.org-signin a:hover { color: #fff; }
+.form-h { font-size: 12px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: #C4B5FD; margin: 4px 0 -4px; }
+.lead-form input::placeholder { color: #6E7183; }
